@@ -1,6 +1,6 @@
 from TikTokLive import TikTokLiveClient
 from TikTokLive.client.web.web_settings import WebDefaults
-from TikTokLive.events import ConnectEvent, FollowEvent, GiftEvent, LikeEvent, CommentEvent, ShareEvent
+from TikTokLive.events import ConnectEvent, FollowEvent, GiftEvent, LikeEvent, CommentEvent, ShareEvent, JoinEvent
 from fastapi import WebSocket
 
 WebDefaults.tiktok_sign_api_key = 'euler_YzA0MzlkNGEwYTlhODgxMzVjZDk4MmNjY2QzMDE5YWE1OWQ5MmQzZGVkMDNkOWNlODk5Y2M3'
@@ -21,6 +21,7 @@ class TikTokListener:
         self.client.add_listener(FollowEvent, self.on_follow_event)
         # self.client.add_listener(CommentEvent, self.on_comment_event)
         self.client.add_listener(ShareEvent, self.on_share_event)
+        self.client.add_listener(JoinEvent, self.on_join_event)
 
     async def close_client(self):
         await self.client.disconnect()
@@ -76,6 +77,14 @@ class TikTokListener:
             'username': event.user.username,
             'avatar': event.user.avatar_thumb.m_urls[0],
             'event_type': 'share'
+        })
+
+    async def on_join_event(self, event: JoinEvent):
+        await self.send_event({
+            'name': event.user.nick_name,
+            'username': event.user.username,
+            'avatar': event.user.avatar_thumb.m_urls[0],
+            'event_type': 'join'
         })
 
     async def send_event(self, event):
