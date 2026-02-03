@@ -17,11 +17,11 @@ class TikTokListener:
         # trigger event listeners
         # self.client.add_listener(ConnectEvent, self.on_connect)
         self.client.add_listener(LikeEvent, self.on_like_event)
-        self.client.add_listener(GiftEvent, self.on_gift_event)
+        # self.client.add_listener(GiftEvent, self.on_gift_event)
         self.client.add_listener(FollowEvent, self.on_follow_event)
         # self.client.add_listener(CommentEvent, self.on_comment_event)
         self.client.add_listener(ShareEvent, self.on_share_event)
-        self.client.add_listener(JoinEvent, self.on_join_event)
+        # self.client.add_listener(JoinEvent, self.on_join_event)
 
     async def close_client(self):
         await self.client.disconnect()
