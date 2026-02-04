@@ -3,7 +3,7 @@ from TikTokLive.client.web.web_settings import WebDefaults
 from TikTokLive.events import ConnectEvent, FollowEvent, GiftEvent, LikeEvent, CommentEvent, ShareEvent, JoinEvent
 from fastapi import WebSocket
 
-WebDefaults.tiktok_sign_api_key = 'euler_YzA0MzlkNGEwYTlhODgxMzVjZDk4MmNjY2QzMDE5YWE1OWQ5MmQzZGVkMDNkOWNlODk5Y2M3'
+# WebDefaults.tiktok_sign_api_key = 'euler_YzA0MzlkNGEwYTlhODgxMzVjZDk4MmNjY2QzMDE5YWE1OWQ5MmQzZGVkMDNkOWNlODk5Y2M3'
 
 class TikTokListener:
     def __init__(self, websocket: WebSocket, username: str):
