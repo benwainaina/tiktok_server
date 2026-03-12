@@ -88,4 +88,7 @@ class TikTokListener:
         })
 
     async def send_event(self, event):
-        await self.socket_ref.send_json(event)
+        try:
+            await self.socket_ref.send_json(event)
+        except Exception as e:
+            pass

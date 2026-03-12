@@ -15,7 +15,10 @@ async def get_live_events(websocket: WebSocket):
             action = payload_if_any.get('action')
             if action == 'connect':
                 listener_ref = TikTokListener(websocket, f'{username}')
-                await listener_ref.start_client()
+                try:
+                    await listener_ref.start_client()
+                except:
+                    pass
             elif action == 'disconnect':
                 await listener_ref.close_client()
     except WebSocketDisconnect:
