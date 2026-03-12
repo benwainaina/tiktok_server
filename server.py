@@ -19,9 +19,7 @@ async def get_live_events(websocket: WebSocket):
             elif action == 'disconnect':
                 await listener_ref.close_client()
     except WebSocketDisconnect as e:
-        print('err.25', e)
         await listener_ref.close_client()
     except Exception as e:
-        print('err.27', e)
         pass
 
