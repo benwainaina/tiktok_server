@@ -91,4 +91,5 @@ class TikTokListener:
         try:
             await self.socket_ref.send_json(event)
         except Exception as e:
+            print('err.send', e)
             pass
