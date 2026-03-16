@@ -21,7 +21,7 @@ class TikTokListener:
         self.client.add_listener(FollowEvent, self.on_follow_event)
         # self.client.add_listener(CommentEvent, self.on_comment_event)
         self.client.add_listener(ShareEvent, self.on_share_event)
-        # self.client.add_listener(JoinEvent, self.on_join_event)
+        self.client.add_listener(JoinEvent, self.on_join_event)
 
     async def close_client(self):
         await self.client.disconnect()
@@ -91,4 +91,5 @@ class TikTokListener:
         try:
             await self.socket_ref.send_json(event)
         except Exception as e:
+            await self.close_client()
             pass
