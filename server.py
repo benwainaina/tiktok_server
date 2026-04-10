@@ -22,5 +22,3 @@ async def get_live_events(websocket: WebSocket):
         await listener_ref.close_client()
     except Exception as e:
         await listener_ref.close_client()
-        pass
-
